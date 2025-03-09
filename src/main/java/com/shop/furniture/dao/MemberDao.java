@@ -47,5 +47,26 @@ public class MemberDao {
 			
 		}
 	}
+	
+	public Member login(Member m) throws Exception {
+		Class.forName(DB_DRIVER);
+		try(
+			Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PW);
+			PreparedStatement stmt = con.prepareStatement("select * from member where id=? and password=?");
+				) {
+			
+			stmt.setString(1, m.getId());
+			stmt.setString(2, m.getPassword());
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				String name = rs.getString("name");
+				m.setName(name);
+			}
+			return m;
+			
+		}
+	}
 
 }
