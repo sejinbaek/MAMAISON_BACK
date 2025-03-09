@@ -13,7 +13,7 @@ import com.shop.furniture.dto.Member;
 import com.shop.furniture.service.MemberService;
 
 @RestController
-@CrossOrigin("http://192.168.0.16:5500/")
+@CrossOrigin("http://192.168.0.38:5500/")
 public class MemberController {
 	@Autowired
 	MemberService memberService;
